@@ -1,0 +1,37 @@
+@import '../../common.less';
+
+:host {
+    height: 100%;
+    div {
+        height: 100%;
+        svg {
+            height: 100%;
+            path {
+                stroke: black;
+                stroke-width: 0.5;
+                fill: @yellow;
+                opacity: 0.5;
+                transition-property: fill;
+                transition-duration: 3s;
+            }
+        }
+
+        &.active {
+            svg {
+                path {
+                    transition-duration: 1s;
+                    fill: @green;
+                }
+            }
+        }
+
+        &.failed {
+            svg {
+                path {
+                    transition-duration: 0s;
+                    fill: @red;
+                }
+            }
+        }
+    }
+}

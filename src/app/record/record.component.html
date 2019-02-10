@@ -1,0 +1,10 @@
+<div class='container' #container (click)='clicked()'>
+  <div class='splash' *ngIf='!fullscreen'><span>🙏🏼</span></div>
+  <ng-container *ngIf='fullscreen'>
+    <app-facevideo></app-facevideo>
+    <app-preparing></app-preparing>
+    <app-progress></app-progress>
+    <app-complete></app-complete>
+    <app-thumbs></app-thumbs>
+  </ng-container>
+</div>

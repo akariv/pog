@@ -1,0 +1,23 @@
+@import '../../common.less';
+
+:host {
+    .layer;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        font-size: 200px;
+        transition-property: opacity;
+        transition-duration: 1s;
+        opacity: 0;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+
+        &.show {
+            opacity: 1;
+            transition-duration: 0s;
+        }
+    }
+}
