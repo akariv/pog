@@ -49,11 +49,15 @@ export class FacevideoComponent implements OnInit {
     const videoEl = this.inputVideo.nativeElement;
     const supportedConstraints = navigator.mediaDevices.getSupportedConstraints();
     const videoConstraints: any = {};
-    const audioConstraints: any = {};
+    let audioConstraints: any = {};
     if (supportedConstraints.facingMode) { videoConstraints.facingMode = 'user'; }
-    if (supportedConstraints.height) { videoConstraints.height = videoEl.offsetWidth; }
-    if (supportedConstraints.width) { videoConstraints.width = videoEl.offsetHeight; }
+    // if (supportedConstraints.height) { videoConstraints.height = videoEl.offsetHeight; }
+    // if (supportedConstraints.width) { videoConstraints.width = videoEl.offsetWidth; }
+    if (supportedConstraints.height) { videoConstraints.height = 480; }
+    if (supportedConstraints.width) { videoConstraints.width = 640; }
     if (supportedConstraints.echoCancellation) { audioConstraints.echoCancellation = true; }
+    if (Object.keys(audioConstraints).length === 0) { audioConstraints = true; }
+    console.log(videoConstraints, audioConstraints);
     this.videoStream = await navigator.mediaDevices
       .getUserMedia({
         video: videoConstraints,
