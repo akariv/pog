@@ -16,8 +16,14 @@ export class RecordComponent implements OnInit {
   }
 
   async clicked() {
-    await this.container.nativeElement.requestFullscreen();
-    await screen.orientation.lock('portrait-primary');
+    if (this.container.nativeElement.requestFullscreen) {
+      await this.container.nativeElement.requestFullscreen();
+    } else if (this.container.nativeElement.webkitRequestFullScreen) {
+      await this.container.nativeElement.webkitRequestFullScreen();
+    }
+    if (screen && screen.orientation && screen.orientation.lock) {
+      await screen.orientation.lock('portrait-primary');
+    }
     this.fullscreen = true;
   }
 
