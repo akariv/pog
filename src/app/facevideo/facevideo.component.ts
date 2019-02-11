@@ -47,14 +47,17 @@ export class FacevideoComponent implements OnInit {
 
   async init() {
     const videoEl = this.inputVideo.nativeElement;
+    const supportedConstraints = navigator.mediaDevices.getSupportedConstraints();
+    const videoConstraints: any = {};
+    const audioConstraints: any = {};
+    if (supportedConstraints.facingMode) { videoConstraints.facingMode = 'user'; }
+    if (supportedConstraints.height) { videoConstraints.height = videoEl.offsetWidth; }
+    if (supportedConstraints.width) { videoConstraints.width = videoEl.offsetHeight; }
+    if (supportedConstraints.echoCancellation) { audioConstraints.echoCancellation = true; }
     this.videoStream = await navigator.mediaDevices
       .getUserMedia({
-        video: {
-          facingMode: 'user',
-          height: videoEl.offsetWidth,
-          width: videoEl.offsetHeight
-        },
-        audio: {echoCancellation: true}
+        video: videoConstraints,
+        audio: audioConstraints,
       });
     videoEl.srcObject = this.videoStream;
   }
