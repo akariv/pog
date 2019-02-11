@@ -18,7 +18,9 @@ export class ProgressComponent implements OnInit {
   ngOnInit() {
     this.state.progress.subscribe((countdown) => {
       if (countdown % 2) {
-        navigator.vibrate([20, 20, 20]);
+        if (navigator && navigator.vibrate) {
+          navigator.vibrate([20, 20, 20]);
+        }
       }
       this.countdown = countdown;
       this.active = countdown >= 0;
