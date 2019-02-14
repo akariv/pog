@@ -53,8 +53,9 @@ export class FacevideoComponent implements OnInit {
     if (supportedConstraints.facingMode) { videoConstraints.facingMode = 'user'; }
     // if (supportedConstraints.height) { videoConstraints.height = videoEl.offsetHeight; }
     // if (supportedConstraints.width) { videoConstraints.width = videoEl.offsetWidth; }
-    if (supportedConstraints.height) { videoConstraints.height = 480; }
-    if (supportedConstraints.width) { videoConstraints.width = 640; }
+    // if (supportedConstraints.height) { videoConstraints.height = 480; }
+    // if (supportedConstraints.width) { videoConstraints.width = 640; }
+    // if (supportedConstraints['resizeMode']) { videoConstraints.resizeMode = 'crop-and-scale'; }
     if (supportedConstraints.echoCancellation) { audioConstraints.echoCancellation = true; }
     if (Object.keys(audioConstraints).length === 0) { audioConstraints = true; }
     console.log(videoConstraints, audioConstraints);

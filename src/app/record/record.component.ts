@@ -21,8 +21,10 @@ export class RecordComponent implements OnInit {
     } else if (this.container.nativeElement.webkitRequestFullScreen) {
       await this.container.nativeElement.webkitRequestFullScreen();
     }
-    if (screen && screen.orientation && screen.orientation.lock) {
+    try {
       await screen.orientation.lock('portrait-primary');
+    } catch {
+      console.log('Failed to lock screen orientation');
     }
     this.fullscreen = true;
   }
